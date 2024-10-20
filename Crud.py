@@ -4,7 +4,7 @@ import json
 denuncias=[]
 
 def salvar_dados():
-    with open('usuarios.json', 'w') as file:
+    with open('pasta.json', 'w') as file:
         json.dump(denuncias, file)
     print("Dados salvos com sucesso!")
 
