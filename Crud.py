@@ -4,6 +4,7 @@ import json
 denuncias=[]
 
 
+
 def apresentacao():
     print("                                 ") 
     print("█▀█ █▀█ █   █ █▀▀ █ ▄▀█   █▀▀ █ █ █ █ █")
@@ -33,7 +34,8 @@ def main():
         escolha=int(input("Escolha um para continuar:"))
         match(escolha):
             case 1:
-            #precisamos de uma função que pergunte:Nome,idade,texto da ocorrencia,local,senha,E PERGUNTE SE ELE QUER USAR FOTOS OU NÃO,USE IF OU ELID OU ELSE PARA FAZER A PERGUNTA
+                print("leandor")
+            #precisamos de uma função que pergunte:Nome,idade,texto da ocorrencia,local.Gere uma senhha aleatoria com no minimo 4 digitos E PERGUNTE SE ELE QUER USAR FOTOS OU NÃO,USE IF OU ELID OU ELSE PARA FAZER A PERGUNTA
             #se quiserem adicionar mais ,recomendo ,mostre uma mensaagem exibindo que foi tudo
             #Enzo
        # case 2:
@@ -53,5 +55,6 @@ def main():
             #A CADA 2 WHILE MUDE OS STATUS NA SEGJUINTE ORDEM ||ANDAMENTO =>ACOES TOMADDAS (FAÇA TRES ACOES E BOTE NO ALEATORIO)=> RESOLUCOES
             #Leandro
             
+
 if __name__=="__main__":
-    main()
+      main()
