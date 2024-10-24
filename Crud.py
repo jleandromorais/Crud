@@ -27,7 +27,7 @@ def main():
         print("[2] Denúncia Anônima")
         print("[3] Denúncias em Andamento")
         print("[4] Sair")
-        escolha = int(input("Escolha um para continuar:"))
+        escolha = int(input("Escolha um para continuar: "))
 
 def menu_denuncia():
     print("="*20, "Denúncias", "="*20)
