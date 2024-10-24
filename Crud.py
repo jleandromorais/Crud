@@ -13,7 +13,8 @@ usuarios_adm = [
     {'Nome':'',
      'Idade':'',
      'Email':'',
-     'Telefone':'',}
+     'Telefone':'',
+     'Senha':''}
 ]
 
 categorias_denuncias = [
