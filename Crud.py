@@ -7,22 +7,18 @@ denuncias ={
      'Data': '',
      'Descrição': '',
      'Protocolo': ''}
-
 usuarios_adm ={
      'Nome':'',
      'Idade':'',
      'Email':'',
      'Telefone':'',
      'Senha':''}
-
 categorias_denuncias = {
     'Categorias':['Roubo', 'Furto', 'Assédio', 'Agressão Física', 'Extorsão']
 }
 
 with open('categorias_denuncias.json', 'w', encoding='utf-8') as arquivo:
     json.dump(categorias_denuncias, arquivo, ensure_ascii=False, indent=4)
-
-
 
 senha_adm = 123456
 
@@ -34,8 +30,6 @@ def apresentacao():
     print("                                 ")
     time.sleep(1)
     os.system("cls")
-
-#Função do usuario pedir foto,faça uma função que peça ao usuario se ele quer pedir uma foto ou vide
 
 def main():
     apresentacao()
