@@ -20,6 +20,7 @@ categorias_denuncias = {
                   'Vandalismo', 'Violência Doméstica', 'Discriminação']
 }
 
+
 with open('categorias_denuncias.json', 'w', encoding='utf-8') as arquivo:
     json.dump(categorias_denuncias, arquivo, ensure_ascii=False, indent=4)
 
@@ -90,7 +91,12 @@ def mudar(index):
          salvar_adm()
          
 
-def excluir 
+def excluir(index):
+    if usuarios(index):
+     usuarios.pop(index)
+     print("usuarios excluidos com sucesso")
+    else:
+        print("Nenhum usuario encontrado")
 
        
     
