@@ -6,7 +6,8 @@ denuncias ={
      'Categoria':'',
      'Data': '',
      'Descrição': '',
-     'Protocolo': ''
+     'Protocolo': '',
+     'Progresso': ''
 }
 usuarios_adm ={
      'Nome':'',
@@ -57,6 +58,7 @@ def menu_adm():
     print("[4] Remover Administrador")
     print("[5] Listar Todas as Denúncias")
     print("[6] Atualizar Progresso de Denúncia")
+    print("[7] Remover Denúncia")
     print("[7] Edição de Categorias")
     print("[8] Sair")
     escolha = int(input("Escolha um para continuar:"))
@@ -78,3 +80,4 @@ if __name__=="__main__":
 #CRUD 2
 
 #CRUD 3
+
