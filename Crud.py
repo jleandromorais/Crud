@@ -17,7 +17,7 @@ usuarios_adm ={
 }
 categorias_denuncias = {
     'Categorias':['Roubo', 'Furto', 'Assédio', 'Agressão Física', 'Fraude', 'Tráfico de Drogas',
-                  'Vandalismo', 'Violência Doméstica', 'Discriminação' ]
+                  'Vandalismo', 'Violência Doméstica', 'Discriminação']
 }
 
 with open('categorias_denuncias.json', 'w', encoding='utf-8') as arquivo:
