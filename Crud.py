@@ -6,13 +6,15 @@ denuncias ={
      'Categoria':'',
      'Data': '',
      'Descrição': '',
-     'Protocolo': ''}
+     'Protocolo': ''
+}
 usuarios_adm ={
      'Nome':'',
      'Idade':'',
      'Email':'',
      'Telefone':'',
-     'Senha':''}
+     'Senha':''
+}
 categorias_denuncias = {
     'Categorias':['Roubo', 'Furto', 'Assédio', 'Agressão Física', 'Extorsão']
 }
