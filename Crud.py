@@ -1,15 +1,20 @@
 import os 
 import time
 import json
+from http.client import responses
 
+ 
 denuncias =[]
 usuarios =[]
 
 def salvar_adm():
     with open("Administração",'w')as file:
-        json.dump(usuarios_adm,file,indent=4)
+        json.dump(usuarios,file,indent=4)
         print("Salvo com sucesso")
     
+
+
+
 categorias_denuncias = {
     'Categorias':['Roubo', 'Furto', 'Assédio', 'Agressão Física', 'Fraude', 'Tráfico de Drogas',
                   'Vandalismo', 'Violência Doméstica', 'Discriminação']
@@ -18,17 +23,11 @@ categorias_denuncias = {
 with open('categorias_denuncias.json', 'w', encoding='utf-8') as arquivo:
     json.dump(categorias_denuncias, arquivo, ensure_ascii=False, indent=4)
 
-senha_adm = 345612
+with open('denuncias.json', 'w', encoding='utf-8') as arquivo:
+    json.dump(denuncias, arquivo, ensure_ascii=False, indent=4)
 
-def adm1(nome,idade,email,telefone,senha):
-    adm ={
-     'Nome':nome,
-     'Idade':idade,
-     'Email':email,
-     'Telefone':telefone,
-     'Senha':senha
-     }
-    usuarios_adm.append(adm)
+
+senha_adm = 123456
 
 def apresentacao():
     print("                                 ") 
@@ -38,7 +37,6 @@ def apresentacao():
     print("                                 ")
     time.sleep(1)
     os.system("cls")
-
 
 
 def menu_denuncia():
@@ -53,9 +51,6 @@ def listar():
         print("USUARIOS CADASTRADOS")
         print(f"{i}-Nome:{adm['nome']} idade:{adm['idade']},telefone:{adm['telefone']}")
 def mudar():        
-
-
-
     print("Qual voce quer alterar:")
     print("1.nome")
     print("2.Idade")
@@ -67,7 +62,15 @@ def mudar():
     match (op):
         case 1:
             novo_nome       
-            
+
+def adm1(nome,idade,email,telefone,senha):
+    adm={"nome:":nome,
+         "idade":idade,
+         "email":email,
+         "telefone":telefone,
+         "senha":senha
+         }            
+    
 def menu_adm():
     print("="*20, "Área de Administrador", "="*20)
     print("[1] Cadastrar Administrador")
@@ -76,6 +79,7 @@ def menu_adm():
     print("[4] Remover Administrador")
     print("[5] Listar Todas as Denúncias")
     print("[6] Atualizar Progresso de Denúncia")
+    print("[7] Remover Denúncia")
     print("[7] Edição de Categorias")
     print("[8] Sair")
     escolha2 = int(input("Escolha um para continuar:"))
@@ -146,3 +150,27 @@ denuncias ={
 
 if __name__=="__main__":
       main()
+
+def criar_categoria():
+    categoria_nova = input("\nDigite a nova categoria: ")
+    categorias_denuncias['Categorias'].append(categoria_nova)
+    print("Categoria criada com sucesso!")
+
+def listar_categorias():
+    print("\nCategorias Atuais: ")
+    for i, Categorias in enumerate(categorias_denuncias['Categorias'], start=1):
+        print(f"{i}.{Categorias}")
+
+def editar_categoria():
+    listar_categorias()
+    resposta = int(input("\n Escolha o número da categoria a ser editada: "))
+    categoria_modificada = input("\nDigite a nova categorias: ")
+    categorias_denuncias['Categorias'][resposta - 1] = categoria_modificada
+    print("Categoria editada com sucesso!")
+
+def remover_categoria():
+    listar_categorias()
+    resposta = int(input("\n Escolha o número da categoria a ser removida: "))
+    categorias_denuncias['Categorias'].pop(resposta-1)
+    print("Categoria removida com sucesso!")
+
