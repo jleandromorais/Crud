@@ -4,7 +4,7 @@ import json
 from http.client import responses
 
  
-denuncias =[]
+denuncia =[]
 usuarios =[]
 
 def salvar_adm():
@@ -51,6 +51,7 @@ def listar():
     for i ,adm in enumerate(usuarios,start=1):
         print("USUARIOS CADASTRADOS")
         print(f"{i}-Nome:{adm['nome']} idade:{adm['idade']},telefone:{adm['telefone']}")
+        
 def mudar(index):
     usuario=usuarios[index]   
     print(f"Qual voce ira alterar {usuario['nome']} quer alterar:")
@@ -181,12 +182,15 @@ def main():
 #CRUD 2
 
 #CRUD 3
-denuncias ={
-     'Categoria':'',
-     'Data': '',
-     'Descrição': '',
-     'Protocolo': ''
+#Se Ussa assim!!
+def denunucias(categoria,data,descricao,protocolo):
+   denuncias ={
+     'Categoria':categoria,
+     'Data': data,
+     'Descrição':descricao,
+     'Protocolo': protocolo
 }
+   denuncia.append(denuncias)
 
 
 if __name__=="__main__":
