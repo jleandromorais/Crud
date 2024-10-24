@@ -50,8 +50,9 @@ def listar():
     for i ,adm in enumerate(usuarios,start=1):
         print("USUARIOS CADASTRADOS")
         print(f"{i}-Nome:{adm['nome']} idade:{adm['idade']},telefone:{adm['telefone']}")
-def mudar():        
-    print("Qual voce quer alterar:")
+def mudar(index):
+    usuario=usuarios[index]   
+    print(f"Qual voce ira alterar {usuario['nome']} quer alterar:")
     print("1.nome")
     print("2.Idade")
     print("3.email")
@@ -61,15 +62,37 @@ def mudar():
     
     match (op):
         case 1:
-            novo_nome       
+         novo_nome=input("Digite um novo nome")
+         usuario['nome']=novo_nome
+         print("Nome atualizado com sucesso") 
+         salvar_adm()
+        case 2:
+         novo_idade=input("Digite um nova idade")
+         usuario['idade']=novo_idade
+         print("Idade atualizado com sucesso") 
+         salvar_adm()
+        
+        case 3:     
+         novo_email=input("Digite um novo email")
+         usuario['email']=novo_email
+         print("Email atualizado com sucesso") 
+         salvar_adm()
+        case 4:
+         novo_tel=input("Digite um novo telefone")
+         usuario['telefone']=novo_tel
+         print("Telefone atualizado com sucesso") 
+         salvar_adm()
+         
+        case 5:    
+         nova_senha=input("Digite um nova senha")
+         usuario['senha']=nova_senha
+         print("Senha atualizado com sucesso") 
+         salvar_adm()
+         
 
-def adm1(nome,idade,email,telefone,senha):
-    adm={"nome:":nome,
-         "idade":idade,
-         "email":email,
-         "telefone":telefone,
-         "senha":senha
-         }            
+def excluir 
+
+       
     
 def menu_adm():
     print("="*20, "Área de Administrador", "="*20)
@@ -83,6 +106,7 @@ def menu_adm():
     print("[7] Edição de Categorias")
     print("[8] Sair")
     escolha2 = int(input("Escolha um para continuar:"))
+ 
     
     match (escolha2):
         case 1:#Terminei primeira funçao ,adicionar
@@ -96,13 +120,24 @@ def menu_adm():
         case 2:
             listar()
         case 3:
-            print("Qual voce quer alterar:")
-            print("1.nome")
-            print("2.Idade")
-            print("3.email")
-            print("4.telefone")
-            print("5.Senha")
-            
+            listar()
+            index=int(print("Qual voce queer mudar?"))-1
+            mudar(index)
+        case 4:
+            listar()
+            index=int(print"qual voce quer apagar?")
+            excluir(index)
+
+def adm1(nome,idade,email,telefone,senha):
+    adm={
+        "Nome":nome,
+        "Idade":idade,
+        "email":email,
+        "telefone":telefone,
+        "senha":senha
+    }
+    usuarios.append(adm)
+    salvar_adm()               
             
         
 
