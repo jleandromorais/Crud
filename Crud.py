@@ -24,6 +24,12 @@ categorias_denuncias = {
 with open('categorias_denuncias.json', 'w', encoding='utf-8') as arquivo:
     json.dump(categorias_denuncias, arquivo, ensure_ascii=False, indent=4)
 
+with open('denuncias.json', 'w', encoding='utf-8') as arquivo:
+    json.dump(denuncias, arquivo, ensure_ascii=False, indent=4)
+
+with open('usuarios_adm.json', 'w', encoding='utf-8') as arquivo:
+    json.dump(usuarios_adm, arquivo, ensure_ascii=False, indent=4)
+
 senha_adm = 123456
 
 def apresentacao():
@@ -80,3 +86,5 @@ if __name__=="__main__":
 #CRUD 2
 
 #CRUD 3
+
+
