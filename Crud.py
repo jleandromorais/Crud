@@ -50,22 +50,26 @@ def listar_adm():
     if usuarios:
       for i ,user in enumerate(usuarios,start=1):
         print("USUARIOS CADASTRADOS")
-        print(f"{i}-Nome:{user['Nome']} idade:{user['Iade']},telefone:{user['telefone']}")
+        print(f"{i}-Nome:{user['Nome']} idade:{user['Idade']},telefone:{user['telefone']}")
     else:
         print("Nenhum usuario cadastrados")
 
 
         
 def mudar_nome_adm(index):
-    usuario=usuarios[index]   
-    print(f"Qual voce ira alterar {usuario['nome']} quer alterar:")
-    print("1.nome")
-    print("2.Idade")
-    print("3.email")
-    print("4.telefone")
-    print("5.Senha")
-    op=int(input("Qual função voce quer escolher:"))
-    
+    if usuarios[index]:
+        usuario=usuarios[index]   
+        print(f"Qual voce ira alterar {usuario['Nome']} quer alterar:")
+        print("1.nome")
+        print("2.Idade")
+        print("3.email")
+        print("4.telefone")
+        print("5.Senha")
+        op=int(input("Qual função voce quer escolher:"))
+    else:
+        print("Nenhum usuario encontrado com esse ID")
+        
+        
     match (op):
         case 1:
          novo_nome=input("Digite um novo nome")
@@ -94,7 +98,7 @@ def mudar_nome_adm(index):
          usuario['senha']=nova_senha
          print("Senha atualizado com sucesso") 
          salvar_adm()
-         
+   
 
 def excluir_adm(index):
     if usuarios(index):
