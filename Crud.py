@@ -1,9 +1,11 @@
 import os 
 import time
 import json
+import random
+import Functions
 from http.client import responses
 
- 
+
 denuncia ={
     'Categoria':'',
     'Data':'',
@@ -54,8 +56,8 @@ def menu_denuncia():
     escolha1= int(input("Escolha um para continuar:"))
 
 def listar_adm():
-    if usuarios:
-      for i ,user in enumerate(usuarios,start=1):
+    if usuarios_adm:
+      for i ,user in enumerate(usuarios_adm,start=1):
         print("USUARIOS CADASTRADOS")
         print(f"{i}-Nome:{user['Nome']} idade:{user['Idade']},telefone:{user['telefone']}")
     else:
@@ -64,8 +66,8 @@ def listar_adm():
 
         
 def mudar_nome_adm(index):
-    if usuarios[index]:
-        usuario=usuarios[index]   
+    if usuarios_adm[index]:
+        usuario=usuarios_adm[index]
         print(f"Qual voce ira alterar {usuario['Nome']} quer alterar:")
         print("1.nome")
         print("2.Idade")
@@ -81,35 +83,30 @@ def mudar_nome_adm(index):
         case 1:
          novo_nome=input("Digite um novo nome")
          usuario['nome']=novo_nome
-         print("Nome atualizado com sucesso") 
-         salvar_adm()
+         print("Nome atualizado com sucesso")
         case 2:
          novo_idade=input("Digite um nova idade")
          usuario['idade']=novo_idade
-         print("Idade atualizado com sucesso") 
-         salvar_adm()
+         print("Idade atualizado com sucesso")
         
         case 3:     
          novo_email=input("Digite um novo email")
          usuario['email']=novo_email
-         print("Email atualizado com sucesso") 
-         salvar_adm()
+         print("Email atualizado com sucesso")
         case 4:
          novo_tel=input("Digite um novo telefone")
          usuario['telefone']=novo_tel
-         print("Telefone atualizado com sucesso") 
-         salvar_adm()
+         print("Telefone atualizado com sucesso")
          
         case 5:    
          nova_senha=input("Digite um nova senha")
          usuario['senha']=nova_senha
-         print("Senha atualizado com sucesso") 
-         salvar_adm()
+         print("Senha atualizado com sucesso")
    
 
 def excluir_adm(index):
-    if usuarios(index):
-     usuarios.pop(index)
+    if usuarios_adm(index):
+     usuarios_adm.pop(index)
      print("usuarios excluidos com sucesso")
     else:
         print("Nenhum usuario encontrado")
@@ -166,17 +163,16 @@ def adm1(nome,idade,email,telefone,senha):
         "telefone":telefone,
         "senha":senha
     }
-    usuarios.append(adm)
-    salvar_adm()               
+    usuarios_adm.append(adm)
   
-def cadastro_adm():    
-  nome=input("Qual nome voce quer cadastrar?")
-  idade=int(input("Qual sua idade ?"))
-  email=input("Qual seu email:")
-  telefone=int(input("Telefone:"))
-  senha=int(input("Qual sua senha:"))
-  senha_adm=senha
-  adm1(nome,idade,email,telefone,senha)  
+def cadastro_adm():
+    nome=input("Qual nome voce quer cadastrar?")
+    idade=int(input("Qual sua idade ?"))
+    email=input("Qual seu email:")
+    telefone=int(input("Telefone:"))
+    senha=int(input("Qual sua senha:"))
+    senha_adm=senha
+    adm1(nome, idade, email, telefone, senha)
         
 
 def menu_categorias():
@@ -208,11 +204,6 @@ def main():
                 else:
                     print("Infelizmente voce não tem o acesso!✌")
 
-
-#CRUD 2
-
-#CRUD 3
-#Se Ussa assim!!
 def denunucias(categoria,data,descricao,protocolo):
    denuncias ={
      'Categoria':categoria,
@@ -225,6 +216,7 @@ def denunucias(categoria,data,descricao,protocolo):
 
 if __name__=="__main__":
       main()
+
 
 def criar_categoria():
     categoria_nova = input("\nDigite a nova categoria: ")
@@ -248,4 +240,3 @@ def remover_categoria():
     resposta = int(input("\n Escolha o número da categoria a ser removida: "))
     categorias_denuncias['Categorias'].pop(resposta-1)
     print("Categoria removida com sucesso!")
-
