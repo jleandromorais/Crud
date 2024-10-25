@@ -4,29 +4,36 @@ import json
 from http.client import responses
 
  
-denuncia =[]
-usuarios =[]
-
-def salvar_adm():
-    with open("Administração",'w')as file:
-        json.dump(usuarios,file,indent=4)
-        print("Salvo com sucesso")
-    
-
-
+denuncia ={
+    'Categoria':'',
+    'Data':'',
+    'Local':'',
+    'Descrição':'',
+    'Número de Protocolo':''
+}
+usuarios_adm ={
+    'Nome':'',
+    'Idade':'',
+    'Email':'',
+    'Telefone':'',
+    'Senha':''
+}
 
 categorias_denuncias = {
-    'Categorias':['Roubo', 'Furto', 'Assédio', 'Agressão Física', 'Fraude', 'Tráfico de Drogas',
+    'Categorias':['Roubo', 'Furto', 'Assédio',
+                  'Agressão Física', 'Fraude', 'Tráfico de Drogas',
                   'Vandalismo', 'Violência Doméstica', 'Discriminação']
 }
 
 
-with open('categorias_denuncias.json', 'w', encoding='utf-8') as arquivo:
-    json.dump(categorias_denuncias, arquivo, ensure_ascii=False, indent=4)
+with open('categorias_denuncias.json', 'w', encoding='utf-8') as file:
+    json.dump(categorias_denuncias, file, ensure_ascii=False, indent=4)
 
-with open('denuncias.json', 'w', encoding='utf-8') as arquivo:
-    json.dump(denuncia, arquivo, ensure_ascii=False, indent=4)
+with open('denuncias.json', 'w', encoding='utf-8') as file:
+    json.dump(denuncia, file, ensure_ascii=False, indent=4)
 
+with open("usuarios_adm.json",'w', encoding='utf-8') as file:
+    json.dump(usuarios_adm, file, ensure_ascii=False, indent=4)
 
 senha_adm = 123456
 
