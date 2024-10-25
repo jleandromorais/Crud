@@ -1,46 +1,54 @@
-import os 
+import os
 import time
 import json
 import random
-import Functions
+import crud_functions
 from http.client import responses
 
-
-denuncia ={
+denuncias =[{
     'Categoria':'',
     'Data':'',
     'Local':'',
     'Descrição':'',
-    'Número de Protocolo':''
-}
-usuarios_adm ={
+    'Número de Protocolo':'',
+    'Progresso':''
+}]
+usuarios_adm =[{
     'Nome':'',
     'Idade':'',
     'Email':'',
     'Telefone':'',
-    'Senha':''
-}
-
-categorias_denuncias = {
+    'Senha':'',
+    'ID':''
+}]
+categorias_denuncias = [{
     'Categorias':['Roubo', 'Furto', 'Assédio',
                   'Agressão Física', 'Fraude', 'Tráfico de Drogas',
                   'Vandalismo', 'Violência Doméstica', 'Discriminação']
-}
-
-
-with open('categorias_denuncias.json', 'w', encoding='utf-8') as file:
-    json.dump(categorias_denuncias, file, ensure_ascii=False, indent=4)
-
-with open('denuncias.json', 'w', encoding='utf-8') as file:
-    json.dump(denuncia, file, ensure_ascii=False, indent=4)
-
-with open("usuarios_adm.json",'w', encoding='utf-8') as file:
-    json.dump(usuarios_adm, file, ensure_ascii=False, indent=4)
+}]
 
 senha_adm = 123456
 
+def salvar_categorias():
+    with open('categorias_denuncias.json', 'w', encoding='utf-8') as file:
+        json.dump(categorias_denuncias, file, ensure_ascii=False, indent=4)
+
+def salvar_denuncias():
+    with open('denuncias.json', 'w', encoding='utf-8') as file:
+        json.dump(denuncias, file, ensure_ascii=False, indent=4)
+
+def salvar_usuarios_adm():
+    with open("usuarios_adm.json",'w', encoding='utf-8') as file:
+        json.dump(usuarios_adm, file, ensure_ascii=False, indent=4)
+
+def gerar_protocolo():
+    protocolo = random.randint(10000, 99999)
+    return protocolo
+
+numero_protocolo = gerar_protocolo()
+
 def apresentacao():
-    print("                                 ") 
+    print("                                 ")
     print("█▀█ █▀█ █   █ █▀▀ █ ▄▀█   █▀▀ █ █ █ █ █")
     print("█▀▀ █▄█ █▄▄ █ █▄▄ █ █▀█   █▄▄ █ ▀▄▀ █ █▄▄")
     print("Faça sua denuncia com a gente de forma segura!")
@@ -63,23 +71,20 @@ def listar_adm():
     else:
         print("Nenhum usuario cadastrados")
 
-
-        
-def mudar_nome_adm(index):
-    if usuarios_adm[index]:
-        usuario=usuarios_adm[index]
-        print(f"Qual voce ira alterar {usuario['Nome']} quer alterar:")
-        print("1.nome")
-        print("2.Idade")
-        print("3.email")
-        print("4.telefone")
-        print("5.Senha")
-        op=int(input("Qual função voce quer escolher:"))
+def atualizar_adm():
+    usuario = input("Digite o ID do usuário: ")
+    if usuario == usuarios_adm['ID']:
+        print("Usuário encontrado! ")
+        print(f"O que você quer alterar?")
+        print("[1] Nome")
+        print("[2] Idade")
+        print("[3] Email")
+        print("[4] Telefone")
+        print("[5] Senha")
+        option=int(input("\n "))
     else:
         print("Nenhum usuario encontrado com esse ID")
-        
-        
-    match (op):
+    match (option):
         case 1:
          novo_nome=input("Digite um novo nome")
          usuario['nome']=novo_nome
@@ -88,8 +93,7 @@ def mudar_nome_adm(index):
          novo_idade=input("Digite um nova idade")
          usuario['idade']=novo_idade
          print("Idade atualizado com sucesso")
-        
-        case 3:     
+        case 3:
          novo_email=input("Digite um novo email")
          usuario['email']=novo_email
          print("Email atualizado com sucesso")
@@ -97,12 +101,11 @@ def mudar_nome_adm(index):
          novo_tel=input("Digite um novo telefone")
          usuario['telefone']=novo_tel
          print("Telefone atualizado com sucesso")
-         
-        case 5:    
+        case 5:
          nova_senha=input("Digite um nova senha")
          usuario['senha']=nova_senha
          print("Senha atualizado com sucesso")
-   
+
 
 def excluir_adm(index):
     if usuarios_adm(index):
@@ -111,11 +114,8 @@ def excluir_adm(index):
     else:
         print("Nenhum usuario encontrado")
 
-       
-    
 def menu_adm():
   while True:
-    
     print("="*20, "Área de Administrador", "="*20)
     print("[1] Cadastrar Administrador")
     print("[2] Listar Administradores")
@@ -126,45 +126,30 @@ def menu_adm():
     print("[7] Remover Denúncia")
     print("[8] Edição de Categorias")
     print("[9] Sair")
-    escolha2 = int(input("Escolha um para continuar:"))
- 
-    
-    match (escolha2):
-        case 1:#Terminei primeira funçao ,adicionar
+    resposta = int(input("Escolha um para continuar:"))
+
+    match (resposta):
+        case 1:
             cadastro_adm()
         case 2:
             listar_adm()
         case 3:
-            listar_adm()
-            index=int(input("Qual voce queer mudar?"))-1
-            mudar_nome_adm(index)
+            atualizar_adm()
         case 4:
-            listar_adm()
-            index=int(input("qual voce quer apagar?"))
-            excluir_adm(index)
-       # case 5:
-            #em trabalho
-        #case 6:
-        #
-        #case 7:
-        
+            excluir_adm()
+        case 5:
+            crud_functions.listar_denuncias()
+        case 6:
+            crud_functions.atualizar_progresso()
+        case 7:
+            crud_functions.remover_denuncia()
         case 8:
-            editar_categoria()
+            crud_functions.editar_categoria()
         case 9:
             print("Voce esta saindo da area do administrador!✌")
+            time.sleep(1)
             break
-            
 
-def adm1(nome,idade,email,telefone,senha):
-    adm={
-        "Nome":nome,
-        "Idade":idade,
-        "email":email,
-        "telefone":telefone,
-        "senha":senha
-    }
-    usuarios_adm.append(adm)
-  
 def cadastro_adm():
     nome=input("Qual nome voce quer cadastrar?")
     idade=int(input("Qual sua idade ?"))
@@ -172,18 +157,29 @@ def cadastro_adm():
     telefone=int(input("Telefone:"))
     senha=int(input("Qual sua senha:"))
     senha_adm=senha
-    adm1(nome, idade, email, telefone, senha)
-        
+    usuarios_adm.append(nome, idade, email, telefone, senha)
 
 def menu_categorias():
-    print("="*20, "Área de Administrador", "="*20)
-    print("[1] Criar Categoria de Denúncia")
-    print("[2] Listar Categorias")
-    print("[3] Editar Categoria")
-    print("[4] Remover Categoria")
-    print("[5] Sair")
-    escolha3 = int(input("Escolha um para continuar:"))
+    while True:
+        print("="*20, "Área de Administrador", "="*20)
+        print("[1] Criar Categoria de Denúncia")
+        print("[2] Listar Categorias")
+        print("[3] Editar Categoria")
+        print("[4] Remover Categoria")
+        print("[5] Sair")
+        resposta = int(input("Escolha um para continuar:"))
 
+        match(resposta):
+            case 1:
+                crud_functions.criar_categoria()
+            case 2:
+                crud_functions.listar_categorias()
+            case 3:
+                crud_functions.editar_categoria()
+            case 4:
+                crud_functions.remover_categoria()
+            case 5:
+                break
 
 def main():
     apresentacao()
@@ -192,51 +188,14 @@ def main():
         print("[2] Denúncia Anônima")
         print("[3] Sair")
         escolha = int(input("\nEscolha um para continuar: "))
-        
+
         match(escolha):
             case 1:
                 print("Bem vindo a area ADM!")
                 codigo=int(input("Qual seu codigo?"))
                 if codigo==senha_adm:
                     menu_adm()
-                    
-                    
                 else:
                     print("Infelizmente voce não tem o acesso!✌")
-
-def denunucias(categoria,data,descricao,protocolo):
-   denuncias ={
-     'Categoria':categoria,
-     'Data': data,
-     'Descrição':descricao,
-     'Protocolo': protocolo
-}
-   denuncia.append(denuncias)
-
-
 if __name__=="__main__":
       main()
-
-
-def criar_categoria():
-    categoria_nova = input("\nDigite a nova categoria: ")
-    categorias_denuncias['Categorias'].append(categoria_nova)
-    print("Categoria criada com sucesso!")
-
-def listar_categorias():
-    print("\nCategorias Atuais: ")
-    for i, Categorias in enumerate(categorias_denuncias['Categorias'], start=1):
-        print(f"{i}.{Categorias}")
-
-def editar_categoria():
-    listar_categorias()
-    resposta = int(input("\n Escolha o número da categoria a ser editada: "))
-    categoria_modificada = input("\nDigite a nova categorias: ")
-    categorias_denuncias['Categorias'][resposta - 1] = categoria_modificada
-    print("Categoria editada com sucesso!")
-
-def remover_categoria():
-    listar_categorias()
-    resposta = int(input("\n Escolha o número da categoria a ser removida: "))
-    categorias_denuncias['Categorias'].pop(resposta-1)
-    print("Categoria removida com sucesso!")
