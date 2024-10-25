@@ -174,7 +174,6 @@ def main():
                 print("Bem vindo a area ADM!")
                 codigo=int(input("Qual seu codigo?"))
                 if codigo==senha_adm:
-                    print("+==========================================+")
                     menu_adm()
                     
                     
