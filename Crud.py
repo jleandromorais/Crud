@@ -47,9 +47,12 @@ def menu_denuncia():
     escolha1= int(input("Escolha um para continuar:"))
 
 def listar_adm():
-    for i ,adm in enumerate(usuarios,start=1):
+    if usuarios:
+      for i ,user in enumerate(usuarios,start=1):
         print("USUARIOS CADASTRADOS")
-        print(f"{i}-Nome:{adm['nome']} idade:{adm['idade']},telefone:{adm['telefone']}")
+        print(f"{i}-Nome:{user['Nome']} idade:{user['Iade']},telefone:{user['telefone']}")
+    else:
+        print("Nenhum usuario cadastrados")
 
 
         
@@ -103,6 +106,8 @@ def excluir_adm(index):
        
     
 def menu_adm():
+  while True:
+    
     print("="*20, "Área de Administrador", "="*20)
     print("[1] Cadastrar Administrador")
     print("[2] Listar Administradores")
@@ -111,8 +116,8 @@ def menu_adm():
     print("[5] Listar Todas as Denúncias")
     print("[6] Atualizar Progresso de Denúncia")
     print("[7] Remover Denúncia")
-    print("[7] Edição de Categorias")
-    print("[8] Sair")
+    print("[8] Edição de Categorias")
+    print("[9] Sair")
     escolha2 = int(input("Escolha um para continuar:"))
  
     
@@ -129,6 +134,18 @@ def menu_adm():
             listar_adm()
             index=int(input("qual voce quer apagar?"))
             excluir_adm(index)
+       # case 5:
+            #em trabalho
+        #case 6:
+        #
+        #case 7:
+        
+        case 8:
+            editar_categoria()
+        case 9:
+            print("Voce esta saindo da area do administrador!✌")
+            break
+            
 
 def adm1(nome,idade,email,telefone,senha):
     adm={
