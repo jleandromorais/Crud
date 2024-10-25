@@ -25,7 +25,7 @@ with open('categorias_denuncias.json', 'w', encoding='utf-8') as arquivo:
     json.dump(categorias_denuncias, arquivo, ensure_ascii=False, indent=4)
 
 with open('denuncias.json', 'w', encoding='utf-8') as arquivo:
-    json.dump(denuncias, arquivo, ensure_ascii=False, indent=4)
+    json.dump(denuncia, arquivo, ensure_ascii=False, indent=4)
 
 
 senha_adm = 123456
@@ -39,7 +39,6 @@ def apresentacao():
     time.sleep(1)
     os.system("cls")
 
-
 def menu_denuncia():
     print("="*20, "Denúncia Anônima", "="*20)
     print("[1] Realizar Denúncia Anônima")
@@ -47,12 +46,14 @@ def menu_denuncia():
     print("[3] Sair")
     escolha1= int(input("Escolha um para continuar:"))
 
-def listar():
+def listar_adm():
     for i ,adm in enumerate(usuarios,start=1):
         print("USUARIOS CADASTRADOS")
         print(f"{i}-Nome:{adm['nome']} idade:{adm['idade']},telefone:{adm['telefone']}")
+
+
         
-def mudar(index):
+def mudar_nome_adm(index):
     usuario=usuarios[index]   
     print(f"Qual voce ira alterar {usuario['nome']} quer alterar:")
     print("1.nome")
@@ -92,7 +93,7 @@ def mudar(index):
          salvar_adm()
          
 
-def excluir(index):
+def excluir_adm(index):
     if usuarios(index):
      usuarios.pop(index)
      print("usuarios excluidos com sucesso")
@@ -117,23 +118,17 @@ def menu_adm():
     
     match (escolha2):
         case 1:#Terminei primeira funçao ,adicionar
-            nome=input("Qual nome voce quer cadastrar?")
-            idade=int(input("Qual sua idade ?"))
-            email=input("Qual seu email:")
-            telefone=int(input("Telefone:"))
-            senha=int(input("Qual sua senha:"))
-            senha_adm=senha
-            adm1(nome,idade,email,telefone,senha)
+            cadastro_adm()
         case 2:
-            listar()
+            listar_adm()
         case 3:
-            listar()
-            index=int(print("Qual voce queer mudar?"))-1
-            mudar(index)
+            listar_adm()
+            index=int(input("Qual voce queer mudar?"))-1
+            mudar_nome_adm(index)
         case 4:
-            listar()
-            index=int(print"qual voce quer apagar?")
-            excluir(index)
+            listar_adm()
+            index=int(input("qual voce quer apagar?"))
+            excluir_adm(index)
 
 def adm1(nome,idade,email,telefone,senha):
     adm={
@@ -145,7 +140,15 @@ def adm1(nome,idade,email,telefone,senha):
     }
     usuarios.append(adm)
     salvar_adm()               
-            
+  
+def cadastro_adm():    
+  nome=input("Qual nome voce quer cadastrar?")
+  idade=int(input("Qual sua idade ?"))
+  email=input("Qual seu email:")
+  telefone=int(input("Telefone:"))
+  senha=int(input("Qual sua senha:"))
+  senha_adm=senha
+  adm1(nome,idade,email,telefone,senha)  
         
 
 def menu_categorias():
