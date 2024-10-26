@@ -21,9 +21,7 @@ def salvar_adm():
         json.dump(usuarios,file,indent=4)
         print("Salvo com sucesso")
     
-def read_json():
-    global usuarios
-    with open("administracao.json", 'r', encoding='utf-8') as file:
+with open("administracao.json", 'r', encoding='utf-8') as file:
             usuarios = json.load(file)
             print("Dados carregados com sucesso!")
 
@@ -47,7 +45,7 @@ def salvar_categorias():
         json.dump(categorias_denuncias, file, ensure_ascii=False, indent=4)
 
 def apresentacao():
-    read_json()
+  
     print("                                 ") 
     print("█▀█ █▀█ █   █ █▀▀ █ ▄▀█   █▀▀ █ █ █ █ █")
     print("█▀▀ █▄█ █▄▄ █ █▄▄ █ █▀█   █▄▄ █ ▀▄▀ █ █▄▄")
@@ -73,8 +71,10 @@ def listar_adm():
 
 
         
-def mudar_nome_adm(index):
-    if usuarios[index]:
+def mudar_dados_adm():
+     listar_adm()
+     index=int(input("Qual voce queer mudar?"))-1
+     if usuarios[index]:
         usuario=usuarios[index]   
         print(f"Qual voce ira alterar {usuario['Nome']} quer alterar:")
         print("1.nome")
@@ -83,10 +83,10 @@ def mudar_nome_adm(index):
         print("4.telefone")
         print("5.Senha")
         op=int(input("Qual função voce quer escolher:"))
-    else:
+     else:
         print("Nenhum usuario encontrado com esse ID")
         
-    match (op):
+     match (op):
         case 1:
          novo_nome=input("Digite um novo nome")
          usuario['nome']=novo_nome
@@ -116,7 +116,9 @@ def mudar_nome_adm(index):
          salvar_adm()
    
 
-def excluir_adm(index):
+def excluir_adm():
+    listar_adm()
+    index=int(input("qual voce quer apagar?"))
     if usuarios(index):
      usuarios.pop(index)
      print("usuarios excluidos com sucesso")
@@ -147,14 +149,10 @@ def menu_adm():
         case 2:
             listar_adm()
         case 3:
-            listar_adm()
-            index=int(input("Qual voce queer mudar?"))-1
-            mudar_nome_adm(index)
+            mudar_dados_adm()
         case 4:
-            listar_adm()
-            index=int(input("qual voce quer apagar?"))
-            excluir_adm(index)
-       # case 5:
+            excluir_adm()
+                 # case 5:
             #em trabalho
         #case 6:
         #

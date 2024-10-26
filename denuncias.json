@@ -1,7 +1,10 @@
-{
-    "Categoria": "",
-    "Data": "",
-    "Local": "",
-    "Descrição": "",
-    "Número de Protocolo": ""
-}
+[
+    {
+        "Categoria": "",
+        "Data": "",
+        "Local": "",
+        "Descrição": "",
+        "Número de Protocolo": "",
+        "Progresso": ""
+    }
+]
