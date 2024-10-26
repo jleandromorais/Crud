@@ -8,9 +8,16 @@ denuncia =[]
 usuarios =[]
 
 def salvar_adm():
-    with open("Administração",'w')as file:
-        json.dump(usuarios,file,indent=4)
+    with open("administracao.json", 'w', encoding='utf-8') as file:
+        json.dump(usuarios, file, indent=4, ensure_ascii=False)
         print("Salvo com sucesso")
+
+
+def read_json():
+    global usuarios
+    with open("administracao.json", 'r', encoding='utf-8') as file:
+            usuarios = json.load(file)
+            print("Dados carregados com sucesso!")
     
 
 
@@ -31,6 +38,7 @@ with open('denuncias.json', 'w', encoding='utf-8') as arquivo:
 senha_adm = 123456
 
 def apresentacao():
+    read_json()
     print("                                 ") 
     print("█▀█ █▀█ █   █ █▀▀ █ ▄▀█   █▀▀ █ █ █ █ █")
     print("█▀▀ █▄█ █▄▄ █ █▄▄ █ █▀█   █▄▄ █ ▀▄▀ █ █▄▄")
@@ -68,7 +76,6 @@ def mudar_nome_adm(index):
         op=int(input("Qual função voce quer escolher:"))
     else:
         print("Nenhum usuario encontrado com esse ID")
-        
         
     match (op):
         case 1:
@@ -151,7 +158,9 @@ def menu_adm():
             break
             
 
-def adm1(nome,idade,email,telefone,senha):
+
+
+def adc_user(nome,idade,email,telefone,senha):
     adm={
         "Nome":nome,
         "Idade":idade,
@@ -169,7 +178,7 @@ def cadastro_adm():
   telefone=int(input("Telefone:"))
   senha=int(input("Qual sua senha:"))
   senha_adm=senha
-  adm1(nome,idade,email,telefone,senha)  
+  adc_user(nome,idade,email,telefone,senha)  
         
 
 def menu_categorias():
