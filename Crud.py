@@ -133,6 +133,7 @@ def excluir_adm(index):
         print("Nenhum usuario encontrado")
     salvar_usuarios_adm()
 
+
 def menu_adm():
   while True:
     print("="*20, "Área de Administrador", "="*20)
