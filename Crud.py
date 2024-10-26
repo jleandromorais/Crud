@@ -1,25 +1,31 @@
 import os 
 import time
 import json
-from http.client import responses
+import random
+import crud_functions
 
  
-denuncia =[]
+
 usuarios =[]
 
+denuncias =[{
+    'Categoria':'',
+    'Data':'',
+    'Local':'',
+    'Descrição':'',
+    'Número de Protocolo':'',
+    'Progresso':''
+}]
 def salvar_adm():
-    with open("administracao.json", 'w', encoding='utf-8') as file:
-        json.dump(usuarios, file, indent=4, ensure_ascii=False)
+    with open("Administração",'w')as file:
+        json.dump(usuarios,file,indent=4)
         print("Salvo com sucesso")
-
-
+    
 def read_json():
     global usuarios
     with open("administracao.json", 'r', encoding='utf-8') as file:
             usuarios = json.load(file)
             print("Dados carregados com sucesso!")
-    
-
 
 
 categorias_denuncias = {
@@ -32,10 +38,13 @@ with open('categorias_denuncias.json', 'w', encoding='utf-8') as arquivo:
     json.dump(categorias_denuncias, arquivo, ensure_ascii=False, indent=4)
 
 with open('denuncias.json', 'w', encoding='utf-8') as arquivo:
-    json.dump(denuncia, arquivo, ensure_ascii=False, indent=4)
+    json.dump(denuncias, arquivo, ensure_ascii=False, indent=4)
 
 
 senha_adm = 123456
+def salvar_categorias():
+    with open('categorias_denuncias.json', 'w', encoding='utf-8') as file:
+        json.dump(categorias_denuncias, file, ensure_ascii=False, indent=4)
 
 def apresentacao():
     read_json()
@@ -222,7 +231,7 @@ def denunucias(categoria,data,descricao,protocolo):
      'Descrição':descricao,
      'Protocolo': protocolo
 }
-   denuncia.append(denuncias)
+   denuncias.append(denuncias)
 
 
 if __name__=="__main__":

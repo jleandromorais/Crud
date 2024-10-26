@@ -1,3 +1,4 @@
+
 categorias_denuncias = {
     'Categorias':['Roubo', 'Furto', 'Assédio', 'Agressão Física', 'Fraude', 'Tráfico de Drogas',
                   'Vandalismo', 'Violência Doméstica', 'Discriminação']
@@ -28,3 +29,4 @@ def remover_categoria():
 
 remover_categoria()
 listar_categorias()
+
