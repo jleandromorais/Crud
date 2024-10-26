@@ -29,6 +29,7 @@ def remover_categoria():
     print("Categoria removida com sucesso!")
     salvar_categorias()
 ####################################################################################
+
 #CRUD DENÚNCIAS
 ####################################################################################
 def criar_denuncia_anonima():
@@ -77,4 +78,7 @@ def remover_denuncia():
     denuncias.remove(resposta-1)
     print("Categoria removida com sucesso!")
     salvar_denuncias()
+####################################################################################
+
+#CRUD USUÁRIOS ADM
 ####################################################################################

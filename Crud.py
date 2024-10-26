@@ -197,5 +197,12 @@ def main():
                     menu_adm()
                 else:
                     print("Infelizmente voce não tem o acesso!✌")
+            case 2:
+                crud_functions.criar_denuncia_anonima()
+            case 3:
+                print("Encerrando Programa...")
+                time.sleep(1)
+                break
+
 if __name__=="__main__":
       main()
