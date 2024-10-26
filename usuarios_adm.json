@@ -1,7 +1,17 @@
-{
-    "Nome": "",
-    "Idade": "",
-    "Email": "",
-    "Telefone": "",
-    "Senha": ""
-}
+[
+    {
+        "Nome": "",
+        "Idade": "",
+        "Email": "",
+        "Telefone": "",
+        "Senha": "",
+        "ID": ""
+    },
+    {
+        "Nome": "1k2k21k",
+        "Idade": "k12",
+        "Email": "k",
+        "Telefone": "21kk12k",
+        "Senha": "121k2"
+    }
+]

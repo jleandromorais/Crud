@@ -5,21 +5,21 @@ import random
 import crud_functions
 from http.client import responses
 
-denuncias =[{
-    'Categoria':'',
-    'Data':'',
-    'Local':'',
-    'Descrição':'',
-    'Número de Protocolo':'',
-    'Progresso':''
+denuncias = [{
+    "Categoria": "",
+    "Data": "",
+    "Local": "",
+    "Descrição": "",
+    "Número de Protocolo": "",
+    "Progresso": ""
 }]
-usuarios_adm =[{
-    'Nome':'',
-    'Idade':'',
-    'Email':'',
-    'Telefone':'',
-    'Senha':'',
-    'ID':''
+usuarios_adm = [{
+    "Nome": "",
+    "Idade": "",
+    "Email": "",
+    "Telefone": "",
+    "Senha": "",
+    "ID": ""
 }]
 categorias_denuncias = [{
     'Categorias':['Roubo', 'Furto', 'Assédio',
@@ -40,6 +40,19 @@ def salvar_denuncias():
 def salvar_usuarios_adm():
     with open("usuarios_adm.json",'w', encoding='utf-8') as file:
         json.dump(usuarios_adm, file, ensure_ascii=False, indent=4)
+        print("Salvo com sucesso! ")
+
+def carregar_categorias():
+    with open('categorias_denuncias.json', 'r') as file:
+        json.load(file)
+
+def carregar_denuncias():
+    with open('denuncias.json', 'r') as file:
+        json.load(file)
+
+def carregar_usuarios_adm():
+    with open('usuarios_adm.json', 'r') as file:
+        json.load(file)
 
 def gerar_protocolo():
     protocolo = random.randint(10000, 99999)
@@ -51,7 +64,7 @@ def apresentacao():
     print("                                 ")
     print("█▀█ █▀█ █   █ █▀▀ █ ▄▀█   █▀▀ █ █ █ █ █")
     print("█▀▀ █▄█ █▄▄ █ █▄▄ █ █▀█   █▄▄ █ ▀▄▀ █ █▄▄")
-    print("Faça sua denuncia com a gente de forma segura!")
+    print("Faça sua denúncia com a gente de forma segura!")
     print("                                 ")
     time.sleep(1)
     os.system("cls")
@@ -64,14 +77,17 @@ def menu_denuncia():
     escolha1= int(input("Escolha um para continuar:"))
 
 def listar_adm():
+    carregar_usuarios_adm()
     if usuarios_adm:
       for i ,user in enumerate(usuarios_adm,start=1):
         print("USUARIOS CADASTRADOS")
         print(f"{i}-Nome:{user['Nome']} idade:{user['Idade']},telefone:{user['telefone']}")
     else:
         print("Nenhum usuario cadastrados")
+    salvar_usuarios_adm()
 
 def atualizar_adm():
+    carregar_usuarios_adm()
     usuario = input("Digite o ID do usuário: ")
     if usuario == usuarios_adm['ID']:
         print("Usuário encontrado! ")
@@ -105,14 +121,17 @@ def atualizar_adm():
          nova_senha=input("Digite um nova senha")
          usuario['senha']=nova_senha
          print("Senha atualizado com sucesso")
+    salvar_usuarios_adm()
 
 
 def excluir_adm(index):
+    carregar_usuarios_adm()
     if usuarios_adm(index):
      usuarios_adm.pop(index)
      print("usuarios excluidos com sucesso")
     else:
         print("Nenhum usuario encontrado")
+    salvar_usuarios_adm()
 
 def menu_adm():
   while True:
@@ -150,6 +169,17 @@ def menu_adm():
             time.sleep(1)
             break
 
+def adicionar_usuario(nome,idade,email,telefone,senha):
+    adm={
+        "Nome":nome,
+        "Idade":idade,
+        "email":email,
+        "telefone":telefone,
+        "senha":senha
+    }
+    usuarios_adm.append(adm)
+    salvar_usuarios_adm()
+
 def cadastro_adm():
     nome=input("Qual nome voce quer cadastrar?")
     idade=int(input("Qual sua idade ?"))
@@ -157,7 +187,7 @@ def cadastro_adm():
     telefone=int(input("Telefone:"))
     senha=int(input("Qual sua senha:"))
     senha_adm=senha
-    usuarios_adm.append(nome, idade, email, telefone, senha)
+    adicionar_usuario(nome,idade,email,telefone,senha)
 
 def menu_categorias():
     while True:
@@ -192,10 +222,14 @@ def main():
         match(escolha):
             case 1:
                 print("Bem vindo a area ADM!")
-                codigo=int(input("Qual seu codigo?"))
-                if codigo==senha_adm:
+                senha=int(input("Insira sua senha: "))
+                if senha==senha_adm:
                     menu_adm()
                 else:
-                    print("Infelizmente voce não tem o acesso!✌")
+                    print("\nInfelizmente voce não tem o acesso!✌")
+            case 2:
+                crud_functions.criar_denuncia_anonima()
+            case 3:
+                break
 if __name__=="__main__":
       main()

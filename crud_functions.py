@@ -36,19 +36,23 @@ def criar_denuncia_anonima():
     listar_categorias()
     categoria_denuncia_anonima = input("")
     denuncias['Categoria'].append(categoria_denuncia_anonima)
+    salvar_denuncias()
 
     data_denuncia = input("\nQual a data do ocorrido? ")
     denuncias['Data'].append(data_denuncia)
+    salvar_denuncias()
 
     local_denuncia = input("Qual foi o local do ocorrido? ")
     denuncias['Local'].append(local_denuncia)
+    salvar_denuncias()
 
     descricao_denuncia = input("Descreva o ocorrido: ")
     denuncias['Descrição'].append(descricao_denuncia)
-
-    print(f"Usuário administrador criado, seu protocolo é {numero_protocolo}! ")
     salvar_denuncias()
 
+    print(f"Usuário administrador criado, seu protocolo é {numero_protocolo}! ")
+    denuncias['Protocolo'].append(numero_protocolo)
+    salvar_denuncias()
 
 def listar_denuncias():
     print("\nDenùncias Atuais: ")
