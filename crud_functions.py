@@ -29,6 +29,7 @@ def remover_categoria():
     print("Categoria removida com sucesso!")
     salvar_categorias()
 ####################################################################################
+
 #CRUD DENÚNCIAS
 ####################################################################################
 def criar_denuncia_anonima():
@@ -82,3 +83,93 @@ def remover_denuncia():
     print("Categoria removida com sucesso!")
     salvar_denuncias()
 ####################################################################################
+
+#CRUD USUÁRIOS ADM
+####################################################################################
+def read_json():
+    global usuarios
+    with open("administracao.json", 'r', encoding='utf-8') as file:
+            usuarios = json.load(file)
+            print("Dados carregados com sucesso!")
+        
+def listar_adm():
+    if usuarios:
+      for i ,user in enumerate(usuarios,start=1):
+        print("USUARIOS CADASTRADOS")
+        print(f"{i}-Nome:{user['Nome']} idade:{user['Idade']},telefone:{user['telefone']}")
+    else:
+        print("Nenhum usuario cadastrados")
+
+
+        
+def mudar_dados_adm():
+     listar_adm()
+     index=int(input("Qual voce queer mudar?"))-1
+     if usuarios[index]:
+        usuario=usuarios[index]   
+        print(f"Qual voce ira alterar {usuario['Nome']} quer alterar:")
+        print("1.nome")
+        print("2.Idade")
+        print("3.email")
+        print("4.telefone")
+        print("5.Senha")
+        op=int(input("Qual função voce quer escolher:"))
+     else:
+        print("Nenhum usuario encontrado com esse ID")
+        
+     match (op):
+        case 1:
+         novo_nome=input("Digite um novo nome")
+         usuario['nome']=novo_nome
+         print("Nome atualizado com sucesso") 
+         salvar_adm()
+        case 2:
+         novo_idade=input("Digite um nova idade")
+         usuario['idade']=novo_idade
+         print("Idade atualizado com sucesso") 
+         salvar_adm()
+        
+        case 3:     
+         novo_email=input("Digite um novo email")
+         usuario['email']=novo_email
+         print("Email atualizado com sucesso") 
+         salvar_adm()
+        case 4:
+         novo_tel=input("Digite um novo telefone")
+         usuario['telefone']=novo_tel
+         print("Telefone atualizado com sucesso") 
+         salvar_adm()
+         
+        case 5:    
+         nova_senha=input("Digite um nova senha")
+         usuario['senha']=nova_senha
+         print("Senha atualizado com sucesso") 
+         salvar_adm()
+
+def excluir_adm():
+    listar_adm()
+    index=int(input("qual voce quer apagar?"))
+    if usuarios(index):
+     usuarios.pop(index)
+     print("usuarios excluidos com sucesso")
+    else:
+        print("Nenhum usuario encontrado")
+def adc_user(nome,idade,email,telefone,senha):
+    adm={
+        "Nome":nome,
+        "Idade":idade,
+        "email":email,
+        "telefone":telefone,
+        "senha":senha
+    }
+    usuarios.append(adm)
+    salvar_adm()               
+  
+def cadastro_adm():    
+  nome=input("Qual nome voce quer cadastrar?")
+  idade=int(input("Qual sua idade ?"))
+  email=input("Qual seu email:")
+  telefone=int(input("Telefone:"))
+  senha=int(input("Qual sua senha:"))
+  senha_adm=senha
+  adc_user(nome,idade,email,telefone,senha)  
