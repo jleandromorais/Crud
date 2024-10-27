@@ -19,7 +19,7 @@ usuarios_adm = [{
     "Email": "",
     "Telefone": "",
     "Senha": "",
-    "ID": ""
+
 }]
 categorias_denuncias = [{
     'Categorias':['Roubo', 'Furto', 'Assédio',
@@ -76,62 +76,7 @@ def menu_denuncia():
     print("[3] Sair")
     escolha1= int(input("Escolha um para continuar:"))
 
-def listar_adm():
-    carregar_usuarios_adm()
-    if usuarios_adm:
-      for i ,user in enumerate(usuarios_adm,start=1):
-        print("USUARIOS CADASTRADOS")
-        print(f"{i}-Nome:{user['Nome']} idade:{user['Idade']},telefone:{user['telefone']}")
-    else:
-        print("Nenhum usuario cadastrados")
-    salvar_usuarios_adm()
 
-def atualizar_adm():
-    carregar_usuarios_adm()
-    usuario = input("Digite o ID do usuário: ")
-    if usuario == usuarios_adm['ID']:
-        print("Usuário encontrado! ")
-        print(f"O que você quer alterar?")
-        print("[1] Nome")
-        print("[2] Idade")
-        print("[3] Email")
-        print("[4] Telefone")
-        print("[5] Senha")
-        option=int(input("\n "))
-    else:
-        print("Nenhum usuario encontrado com esse ID")
-    match (option):
-        case 1:
-         novo_nome=input("Digite um novo nome")
-         usuario['nome']=novo_nome
-         print("Nome atualizado com sucesso")
-        case 2:
-         novo_idade=input("Digite um nova idade")
-         usuario['idade']=novo_idade
-         print("Idade atualizado com sucesso")
-        case 3:
-         novo_email=input("Digite um novo email")
-         usuario['email']=novo_email
-         print("Email atualizado com sucesso")
-        case 4:
-         novo_tel=input("Digite um novo telefone")
-         usuario['telefone']=novo_tel
-         print("Telefone atualizado com sucesso")
-        case 5:
-         nova_senha=input("Digite um nova senha")
-         usuario['senha']=nova_senha
-         print("Senha atualizado com sucesso")
-    salvar_usuarios_adm()
-
-
-def excluir_adm(index):
-    carregar_usuarios_adm()
-    if usuarios_adm(index):
-     usuarios_adm.pop(index)
-     print("usuarios excluidos com sucesso")
-    else:
-        print("Nenhum usuario encontrado")
-    salvar_usuarios_adm()
 
 
 def menu_adm():
@@ -150,13 +95,13 @@ def menu_adm():
 
     match (resposta):
         case 1:
-            cadastro_adm()
+            crud_functions.cadastro_adm()
         case 2:
-            listar_adm()
+            crud_functions.listar_adm()
         case 3:
-            atualizar_adm()
+            crud_functions.mudar_dados_adm()
         case 4:
-            excluir_adm()
+            crud_functions.excluir_adm()
         case 5:
             crud_functions.listar_denuncias()
         case 6:
@@ -170,25 +115,6 @@ def menu_adm():
             time.sleep(1)
             break
 
-def adicionar_usuario(nome,idade,email,telefone,senha):
-    adm={
-        "Nome":nome,
-        "Idade":idade,
-        "email":email,
-        "telefone":telefone,
-        "senha":senha
-    }
-    usuarios_adm.append(adm)
-    salvar_usuarios_adm()
-
-def cadastro_adm():
-    nome=input("Qual nome voce quer cadastrar?")
-    idade=int(input("Qual sua idade ?"))
-    email=input("Qual seu email:")
-    telefone=int(input("Telefone:"))
-    senha=int(input("Qual sua senha:"))
-    senha_adm=senha
-    adicionar_usuario(nome,idade,email,telefone,senha)
 
 def menu_categorias():
     while True:
@@ -213,6 +139,7 @@ def menu_categorias():
                 break
 
 def main():
+    crud_functions.carregar_dados_iniciais()
     apresentacao()
     while True:
         print("\n[1] Área de Administrador")

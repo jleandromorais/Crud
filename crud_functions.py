@@ -1,4 +1,7 @@
 import json
+import os
+
+usuarios=[]
 
 #CRUD CATEGORIAS
 ######################################################################################
@@ -82,15 +85,33 @@ def remover_denuncia():
     denuncias.remove(resposta-1)
     print("Categoria removida com sucesso!")
     salvar_denuncias()
+
 ####################################################################################
 
 #CRUD USUÁRIOS ADM
 ####################################################################################
-def read_json():
+
+arquivo_usuarios = "usuarios_adm.json"
+usuarios = []
+
+# Função para carregar os dados do JSON para a lista 'usuarios'
+def salvar_json_read():
     global usuarios
-    with open("administracao.json", 'r', encoding='utf-8') as file:
-            usuarios = json.load(file)
-            print("Dados carregados com sucesso!")
+    if os.path.exists(arquivo_usuarios) and os.path.getsize(arquivo_usuarios) > 0:
+        with open(arquivo_usuarios, 'r', encoding='utf-8') as arquivo_json:
+            try:
+                usuarios = json.load(arquivo_json)  # Carrega dados diretamente na lista 'usuarios'
+            except json.JSONDecodeError:
+                print("Erro ao ler o arquivo JSON, inicializando lista vazia.")
+                usuarios = []
+    else:
+        usuarios = []  # Inicializa uma lista vazia se o arquivo não existir ou estiver vazio
+
+# Função para salvar os dados no JSON
+def salvar_adm():
+    with open(arquivo_usuarios, 'w', encoding='utf-8') as file:
+        json.dump(usuarios, file, ensure_ascii=False, indent=4)
+        print("Dados salvos com sucesso!")
         
 def listar_adm():
     if usuarios:
@@ -160,12 +181,13 @@ def adc_user(nome,idade,email,telefone,senha):
         "Idade":idade,
         "email":email,
         "telefone":telefone,
-        "senha":senha
+        "senha":senha,
     }
     usuarios.append(adm)
     salvar_adm()               
   
-def cadastro_adm():    
+def cadastro_adm():     
+  salvar_json_read()
   nome=input("Qual nome voce quer cadastrar?")
   idade=int(input("Qual sua idade ?"))
   email=input("Qual seu email:")
@@ -173,3 +195,4 @@ def cadastro_adm():
   senha=int(input("Qual sua senha:"))
   senha_adm=senha
   adc_user(nome,idade,email,telefone,senha)  
+  
