@@ -32,10 +32,10 @@ def autenticacao_adm():
         for user in usuarios_adm) or nome_usuario == username_padrao and senha == senha_padrao
 
     if autenticado:
-        print("\n Autenticação realizada, bem vindo!")
+        print("\nAutenticação realizada, bem vindo!")
         menu_functions.menu_adm()
     else:
-        print("\n Infelizmente você não tem acesso! ")
+        print("\nAcesso Negado! ")
 
 def main():
     menu_functions.menu_inicial()

@@ -12,7 +12,7 @@ def adicionar_usuario(novo_usuario):
 
 def cadastro_adm():
     json_functions.carregar_usuarios_adm()
-    username = input("Informe o nome de usuário do novo administrador: ")
+    username = input("\nInforme o nome de usuário do novo administrador: ")
     nome = input("Informe o nome do novo administrador: ")
     idade = input("Informe a idade do novo administrador: ")
     email = input("Informe o email do novo administrador: ")
@@ -33,7 +33,7 @@ def listar_adm():
     usuarios_adm = json_functions.carregar_usuarios_adm()
     if usuarios_adm:
         print("\nADMINISTRADORES CADASTRADOS:")
-        for i, user in enumerate(usuarios_adm[1:], start=1):
+        for i, user in enumerate(usuarios_adm, start=1):
             print("-" * 40)
             print(f"  Usuário {i}:")
             print(f"  Nome de Usuário: {user.get('username')}")
