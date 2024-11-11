@@ -1,9 +1,9 @@
 import time
-import os
 import main
 import crud_functions
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
+
 
 def menu_inicial():
     print("                                 ")
@@ -12,7 +12,6 @@ def menu_inicial():
     print("Faça sua denúncia de forma segura!")
     print("                                 ")
     time.sleep(1)
-    os.system("cls")
 
 def menu_principal():
     while True:
