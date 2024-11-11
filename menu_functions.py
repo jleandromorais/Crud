@@ -59,6 +59,7 @@ def menu_denuncia():
                     print(Fore.LIGHTMAGENTA_EX + "Digite uma opção válida! ")
         except ValueError:
             print(Fore.LIGHTMAGENTA_EX + "Digite um valor válido!")
+
 def menu_adm():
     while True:
         print(Fore.YELLOW + "\n" + "=" * 20 + "Área de Administrador"+ "=" * 20)
@@ -99,6 +100,7 @@ def menu_adm():
                     print(Fore.LIGHTMAGENTA_EX + "Digite uma opção válida!")
         except ValueError:
             print(Fore.LIGHTMAGENTA_EX + "Digite um valor válido! ")
+
 def menu_categorias():
     while True:
         print(Fore.YELLOW + "=" * 20 + "Menu de Edição de Categorias" + "=" * 20)
