@@ -44,7 +44,7 @@ def menu_denuncia():
         print(Fore.GREEN + "[2] Busca por Denúncia")
         print(Fore.GREEN + "[3] Sair")
         try:
-            resposta= int(input(Fore.LIGHTWHITE_EX + "Escolha um para continuar:"))
+            resposta = int(input(Fore.LIGHTWHITE_EX + "Escolha um para continuar:"))
 
             match resposta:
                 case 1:
