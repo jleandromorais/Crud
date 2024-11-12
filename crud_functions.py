@@ -80,8 +80,8 @@ def remover_adm():
     usuarios_adm = json_functions.carregar_usuarios_adm()
     resposta = int(input("\nQual usuário você quer remover? "))
     if 0 < resposta <= len(usuarios_adm):
-     usuarios_adm.pop(resposta)
-     print("Usuario removido com sucesso! ")
+        usuarios_adm.pop(resposta - 1)
+        print("Usuario removido com sucesso! ")
     else:
         print("Nenhum usuario encontrado")
     json_functions.salvar_usuarios_adm(usuarios_adm)
