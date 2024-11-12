@@ -1,9 +1,7 @@
-import email
 import main
 import json
 import menu_functions
 import json_functions
-from json_functions import *
 
 def adicionar_usuario(novo_usuario):
     usuarios_adm = json_functions.carregar_usuarios_adm()
