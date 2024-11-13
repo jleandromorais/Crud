@@ -29,7 +29,7 @@ def menu_principal():
                     menu_denuncia()
                 case 3:
                     print(Fore.LIGHTWHITE_EX + "Encerrando...")
-                    time.sleep(1.5)
+                    time.sleep(1)
                     break
                 case _:
                     print(Fore.LIGHTMAGENTA_EX + "Escolha uma opção válida!")
@@ -54,6 +54,8 @@ def menu_denuncia():
                     crud_functions.buscar_denuncias(protocolo)
                 case 3:
                     break
+                    print("Saindo...")
+                    time.sleep(1)
                 case _:
                     print(Fore.LIGHTMAGENTA_EX + "Digite uma opção válida! ")
         except ValueError:
@@ -109,17 +111,21 @@ def menu_categorias():
         print(Fore.GREEN + "[4] Remover Categoria")
         print(Fore.GREEN + "[5] Sair")
         resposta = int(input(Fore.LIGHTWHITE_EX + "Escolha um para continuar:"))
-        match resposta:
-            case 1:
-                crud_functions.criar_categoria()
-            case 2:
-                crud_functions.listar_categorias()
-            case 3:
-                crud_functions.editar_categoria()
-            case 4:
-                crud_functions.remover_categoria()
-            case 5:
-                break
-                time.sleep(1)
-            case _:
-                print(Fore.LIGHTMAGENTA_EX + "Informe um valor válido! ")
+        try:
+            match resposta:
+                case 1:
+                    crud_functions.criar_categoria()
+                case 2:
+                    crud_functions.listar_categorias()
+                case 3:
+                    crud_functions.editar_categoria()
+                case 4:
+                    crud_functions.remover_categoria()
+                case 5:
+                    time.sleep(1)
+                    print("Saindo...")
+                    break
+                case _:
+                    print(Fore.LIGHTMAGENTA_EX + "Informe um valor válido! ")
+        except ValueError:
+            print(Fore.LIGHTMAGENTA_EX + "Digite um valor válido!")
