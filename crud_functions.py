@@ -1,6 +1,4 @@
 import main
-import json
-import menu_functions
 import json_functions
 
 def adicionar_usuario(novo_usuario):
