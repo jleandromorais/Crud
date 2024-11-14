@@ -1,17 +1,21 @@
 import time
+
+from colorama.ansi import clear_screen
+
 import main
 import crud_functions
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
 
-
 def menu_inicial():
-    print("                                 ")
-    print(Fore.BLUE + Style.BRIGHT + "█▀█ █▀█ █   █ █▀▀ █ ▄▀█   █▀▀ █ █ █ █ █")
-    print(Fore.CYAN + Style.BRIGHT + "█▀▀ █▄█ █▄▄ █ █▄▄ █ █▀█   █▄▄ █ ▀▄▀ █ █▄▄")
-    print("Faça sua denúncia de forma segura!")
-    print("                                 ")
-    time.sleep(1)
+    while True:
+        print("                                 ")
+        print(Fore.BLUE + Style.BRIGHT + "█▀█ █▀█ █   █ █▀▀ █ ▄▀█   █▀▀ █ █ █ █ █")
+        print(Fore.CYAN + Style.BRIGHT + "█▀▀ █▄█ █▄▄ █ █▄▄ █ █▀█   █▄▄ █ ▀▄▀ █ █▄▄")
+        print("Faça sua denúncia de forma segura!")
+        print("                                 ")
+        time.sleep(1)
+        break
 
 def menu_principal():
     while True:
@@ -39,7 +43,7 @@ def menu_principal():
 
 def menu_denuncia():
     while True:
-        print(Fore.YELLOW + "\n" + "="*20, "Denúncia Anônima" + "="*20)
+        print(Fore.YELLOW + "\n" + "=" * 20 + " Denúncia Anônima " + "=" * 20)
         print(Fore.GREEN + "[1] Realizar Denúncia Anônima")
         print(Fore.GREEN + "[2] Busca por Denúncia")
         print(Fore.GREEN + "[3] Sair")
@@ -53,9 +57,9 @@ def menu_denuncia():
                     protocolo = input(Fore.LIGHTWHITE_EX + "\nInforme o número do protocolo da sua denúncia: ")
                     crud_functions.buscar_denuncias(protocolo)
                 case 3:
-                    break
-                    print("Saindo...")
+                    print(Fore.LIGHTWHITE_EX + "Saindo...")
                     time.sleep(1)
+                    break
                 case _:
                     print(Fore.LIGHTMAGENTA_EX + "Digite uma opção válida! ")
         except ValueError:
@@ -122,8 +126,8 @@ def menu_categorias():
                 case 4:
                     crud_functions.remover_categoria()
                 case 5:
-                    time.sleep(1)
                     print("Saindo...")
+                    time.sleep(1)
                     break
                 case _:
                     print(Fore.LIGHTMAGENTA_EX + "Informe um valor válido! ")

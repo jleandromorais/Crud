@@ -45,31 +45,32 @@ def alterar_adm():
     usuarios_adm = json_functions.carregar_usuarios_adm()
     listar_adm()
     json_functions.carregar_usuarios_adm()
-    resposta = int(input("\nQual administrador você quer modificar?"))
-    try:
-        if 0 < resposta <len(usuarios_adm):
-            print(f"\nQual informação você gostaria de alterar?")
-            print("[1] Username ")
-            print("[2] Nome")
-            print("[3] Idade")
-            print("[4] Email")
-            print("[5] Telefone")
-            print("[6] Senha")
+    if usuarios_adm:
+        resposta = int(input("\nQual administrador você quer modificar?"))
+        try:
+            if 0 < resposta <len(usuarios_adm):
+                print(f"\nQual informação você gostaria de alterar?")
+                print("[1] Username ")
+                print("[2] Nome")
+                print("[3] Idade")
+                print("[4] Email")
+                print("[5] Telefone")
+                print("[6] Senha")
 
-            opcao = int(input("\n"))
-            campos = ["username", "nome", "idade", "email", "telefone", "senha"]
+                opcao = int(input("\n"))
+                campos = ["username", "nome", "idade", "email", "telefone", "senha"]
 
-            if 1 <= opcao <= 6:
-                novo_valor = input(f"Digite o novo valor para {campos[opcao - 1]}: ")
-                usuarios_adm[resposta][campos[opcao - 1]] = novo_valor
-                json_functions.salvar_usuarios_adm(usuarios_adm)
-                print("Informação alterada com sucesso!")
+                if 1 <= opcao <= 6:
+                    novo_valor = input(f"Digite o novo valor para {campos[opcao - 1]}: ")
+                    usuarios_adm[resposta][campos[opcao - 1]] = novo_valor
+                    json_functions.salvar_usuarios_adm(usuarios_adm)
+                    print("Informação alterada com sucesso!")
+                else:
+                    print("Opção inválida! ")
             else:
-                print("Opção inválida! ")
-        else:
-            print("Administrador não encontrado!")
-    except ValueError:
-        print("Entrada inválida! Por favor, insira um número.")
+                print("Administrador não encontrado!")
+        except ValueError:
+            print("Entrada inválida! Por favor, insira um número.")
 
 def remover_adm():
     listar_adm()
@@ -147,39 +148,40 @@ def listar_denuncias():
 def atualizar_progresso():
     denuncias = json_functions.carregar_denuncias()
     listar_denuncias()
-    resposta = int(input("\nQual denúncia você quer alterar o progresso? "))
-    try:
-        if 0 < resposta < len(denuncias):
-                print("Escolha a nova categoria: ")
-                print("[1] Em Andamento")
-                print("[2] Caso Encerrado ")
-                opcao = int(input("\n"))
+    if denuncias:
+        resposta = int(input("\nQual denúncia você quer alterar o progresso? "))
+        try:
+            if 0 < resposta <= len(denuncias):
+                    print("Escolha a nova categoria: ")
+                    print("[1] Em Andamento")
+                    print("[2] Caso Encerrado ")
+                    opcao = int(input("\n"))
 
-                while True:
-                    match opcao:
-                        case 1:
-                            novo_progresso = "Em Andamento"
-                            break
-                        case 2:
-                            novo_progresso = "Caso Encerrado"
-                            break
-                        case _:
-                            print("Escolha um número válido! ")
+                    while True:
+                        match opcao:
+                            case 1:
+                                novo_progresso = "Em Andamento"
+                                break
+                            case 2:
+                                novo_progresso = "Caso Encerrado"
+                                break
+                            case _:
+                                print("Escolha um número válido! ")
 
-                denuncias[resposta]["progresso"] = novo_progresso
-                json_functions.salvar_denuncias(denuncias)
-                print("Progresso atualizado com sucesso!")
-        else:
-            print("Opção inválida! ")
+                    denuncias[resposta - 1]["progresso"] = novo_progresso
+                    json_functions.salvar_denuncias(denuncias)
+                    print("Progresso atualizado com sucesso!")
+            else:
+                print("Opção inválida! ")
 
-    except ValueError:
-        print("Entrada inválida! Por favor, insira um número.")
+        except ValueError:
+            print("Entrada inválida! Por favor, insira um número.")
 
 def remover_denuncia():
     listar_denuncias()
     denuncias = json_functions.carregar_denuncias()
-    resposta = int(input("\nQual denúncia você quer remover? "))
     if denuncias:
+        resposta = int(input("\nQual denúncia você quer remover? "))
         if 0 < resposta <= len(denuncias):
             denuncias.pop(resposta-1)
             print("Denúncia removida com sucesso! ")
