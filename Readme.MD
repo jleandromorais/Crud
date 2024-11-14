@@ -78,8 +78,11 @@ sistema_denuncias/
 ### Menu Inicial:
 
 - Denúncia Anônima:
+ 
   Ao iniciar o programa, os usuários podem optar por criar uma denúncia anônima, selecionando uma categoria e descrevendo a ocorrência.
+
 - Buscar por Denúncias:
+
   Também na tela inicial, usuários podem buscar suas denúncias pelo número de protocolo gerado ao final de cada denúncia
 
 ### Área de Administrador:
