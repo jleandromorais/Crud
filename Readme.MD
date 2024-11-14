@@ -58,17 +58,20 @@ sistema_denuncias/
 ### Passos de Instalação
 
 1. **Clone o repositório**:
-   ```bash
-   git clone https://github.com/seu_usuario/sistema_denuncias.git
-   cd sistema_denuncias
+  ```
+  git clone https://github.com/seu_usuario/sistema_denuncias.git
+  cd sistema_denuncias
+  ```
 
 2. **Instale as dependências**:
-   ```bash
-   pip install colorama
+  ```
+  pip install colorama
+  ```
 
 3. **Execute o projeto**:
-  ```bash
+  ```
   python main.py
+  ```
 
 ## Uso
 
