@@ -75,19 +75,20 @@ sistema_denuncias/
 
 ## Uso
 
-### Denúncia Anônima:
-Ao iniciar o programa, os usuários podem optar por criar uma denúncia anônima, selecionando uma categoria e descrevendo a ocorrência.
+### Menu Inicial:
 
-### Buscar por Denúncias:
+- Denúncia Anônima
+Ao iniciar o programa, os usuários podem optar por criar uma denúncia anônima, selecionando uma categoria e descrevendo a ocorrência.
+- Buscar por Denúncias
 Também na tela inicial, usuários podem buscar suas denúncias pelo número de protocolo gerado ao final de cada denúncia
 
 ### Área de Administrador:
 Os administradores podem acessar o menu de opções de CRUD para:
 
-### Gerenciar outros administradores.
-### Visualizar e modificar o status das denúncias.
-### Adicionar, listar, alterar ou remover categorias de denúncia.
-### Nota: Cada função é exibida com coloração personalizada (via Colorama) para melhor orientação dos usuários durante a navegação no terminal.
+- Gerenciar outros administradores.
+- Visualizar e modificar o status das denúncias.
+- Adicionar, listar, alterar ou remover categorias de denúncia.
+- Nota: Cada função é exibida com coloração personalizada (via Colorama) para melhor orientação dos usuários durante a navegação no terminal.
 
 ## Requisitos do Sistema
 Python 3.8 ou superior
