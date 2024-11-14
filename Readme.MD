@@ -94,5 +94,5 @@ Os administradores podem acessar o menu de opções de CRUD para:
 - Nota: Cada função é exibida com coloração personalizada (via Colorama) para melhor orientação dos usuários durante a navegação no terminal.
 
 ## Requisitos do Sistema
-Python 3.8 ou superior
-Sistema Operacional compatível com Python e terminal que suporte ANSI para exibir cores do Colorama.
+  Python 3.8 ou superior
+  Sistema Operacional compatível com Python e terminal que suporte ANSI para exibir cores do Colorama.
