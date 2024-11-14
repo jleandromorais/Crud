@@ -12,8 +12,6 @@ Este projeto, desenvolvido para a disciplina **Fundamentos da Computação** com
 - [Instalação e Execução](#instalação-e-execução)
 - [Uso](#uso)
 - [Requisitos do Sistema](#requisitos-do-sistema)
-- [Contribuições](#contribuições)
-- [Licença](#licença)
 
 ## Funcionalidades
 
@@ -71,14 +69,22 @@ sistema_denuncias/
   ```bash
   python main.py
 
-Uso
-Denúncia Anônima:
+## Uso
+
+### Denúncia Anônima:
 Ao iniciar o programa, os usuários podem optar por criar uma denúncia anônima, selecionando uma categoria e descrevendo a ocorrência.
 
-Área de Administrador:
+### Buscar por Denúncias:
+Também na tela inicial, usuários podem buscar suas denúncias pelo número de protocolo gerado ao final de cada denúncia
+
+### Área de Administrador:
 Os administradores podem acessar o menu de opções de CRUD para:
 
-Gerenciar outros administradores.
-Visualizar e modificar o status das denúncias.
-Adicionar, listar ou remover categorias de denúncia.
-Nota: Cada função é exibida com coloração personalizada (via Colorama) para melhor orientação dos usuários durante a navegação no terminal.
+### Gerenciar outros administradores.
+### Visualizar e modificar o status das denúncias.
+### Adicionar, listar, alterar ou remover categorias de denúncia.
+### Nota: Cada função é exibida com coloração personalizada (via Colorama) para melhor orientação dos usuários durante a navegação no terminal.
+
+## Requisitos do Sistema
+Python 3.8 ou superior
+Sistema Operacional compatível com Python e terminal que suporte ANSI para exibir cores do Colorama.
