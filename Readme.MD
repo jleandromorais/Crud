@@ -1,4 +1,4 @@
-# Sistema de Denúncias - CRUD
+# Sistema de Denúncias
 
 ![Status](https://img.shields.io/badge/Status-%20Finalizado-green)
 ![Python](https://img.shields.io/badge/Python-v3.13+-blue)
