@@ -46,6 +46,7 @@ sistema_denuncias/
 │   ├── denuncias.json        # Base de dados JSON para denúncias efetuadas
 │   └── usuarios.json         # Base de dados JSON para usuários administradores
 └── README.md                 # Documentação do projeto
+```plaintext
 
 ## Instalação e Execução
 
