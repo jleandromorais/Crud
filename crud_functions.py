@@ -44,12 +44,11 @@ def listar_adm():
 def alterar_adm():
     usuarios_adm = json_functions.carregar_usuarios_adm()
     listar_adm()
-    json_functions.carregar_usuarios_adm()
     if usuarios_adm:
-        resposta = int(input("\nQual administrador você quer modificar?"))
+        resposta = int(input("\nQual administrador você quer modificar? "))
         try:
-            if 0 < resposta <len(usuarios_adm):
-                print(f"\nQual informação você gostaria de alterar?")
+            if 0 < resposta <=len(usuarios_adm):
+                print(f"\nQual informação você gostaria de alterar? ")
                 print("[1] Username ")
                 print("[2] Nome")
                 print("[3] Idade")
@@ -62,7 +61,7 @@ def alterar_adm():
 
                 if 1 <= opcao <= 6:
                     novo_valor = input(f"Digite o novo valor para {campos[opcao - 1]}: ")
-                    usuarios_adm[resposta][campos[opcao - 1]] = novo_valor
+                    usuarios_adm[resposta - 1][campos[opcao - 1]] = novo_valor
                     json_functions.salvar_usuarios_adm(usuarios_adm)
                     print("Informação alterada com sucesso!")
                 else:
@@ -201,7 +200,8 @@ def buscar_denuncias(protocolo_busca):
             print(f"  Protocolo: {denuncia.get('protocolo', 'Não informado')}")
             print(f"  Progresso: {denuncia.get('progresso', 'Não informado')}")
             break
-    print("Nenhuma denúncia encontrada com esse protocolo.")
+        else:
+            print("Nenhuma denúncia encontrada com esse protocolo.")
 
 def criar_categoria():
     categorias_denuncias = json_functions.carregar_categorias()
@@ -223,7 +223,7 @@ def editar_categoria():
     categorias_denuncias = json_functions.carregar_categorias()
     listar_categorias()
     try:
-        resposta = int(input("\n Escolha o número da categoria a ser editada: "))
+        resposta = int(input("\nEscolha o número da categoria a ser editada: "))
         categorias_lista = categorias_denuncias.get("categorias", [])
 
         if 0 < resposta <= len(categorias_lista):
