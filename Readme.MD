@@ -33,6 +33,7 @@ Este projeto, desenvolvido para a disciplina **Fundamentos da Computação** com
 
 ## Estrutura do Projeto
 
+```
 sistema_denuncias/
 ├── main.py                   # Arquivo principal do sistema
 ├── modulos/
@@ -45,7 +46,7 @@ sistema_denuncias/
 │   ├── denuncias.json        # Base de dados JSON para denúncias efetuadas
 │   └── usuarios.json         # Base de dados JSON para usuários administradores
 └── README.md                 # Documentação do projeto
-
+```
 
 ## Instalação e Execução
 
