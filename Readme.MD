@@ -19,6 +19,7 @@ Este projeto, desenvolvido para a disciplina **Fundamentos da Computação** com
 
 ### Área Pública
 - **Criar Denúncia Anônima**: Usuários podem registrar denúncias de forma anônima. As denúncias são categorizadas, e o progresso delas pode ser atualizado na área administrativa.
+- **Buscar Denúncia**: Usuários ao fim de cada denúncia rebem um número de protocolo, na aba de "Buscar Denúncia" é possível verificar os dados da denúncia e o progresso.
 
 ### Área de Administrador
 - **Gerenciamento de Administradores**:
@@ -38,16 +39,16 @@ Este projeto, desenvolvido para a disciplina **Fundamentos da Computação** com
 sistema_denuncias/
 ├── main.py                   # Arquivo principal do sistema
 ├── modulos/
-│   ├── denuncias.py          # Funções CRUD para denúncias
-│   ├── administradores.py    # Funções CRUD para administradores
-│   ├── categorias.py         # Funções CRUD para categorias de denúncias
-│   ├── progresso.py          # Funções para atualizar progresso de denúncias
-│   └── utilitarios.py        # Funções utilitárias e configurações da biblioteca Colorama
+│   ├── crud_functions.py     # Funções relacionadas aos CRUD's
+│   ├── json_functions.py     # Funções Json
+│   ├── main.py               # Arquivo principal do sistema
+│   ├── menu_functions.py     # Funções de menus
 ├── data/
-│   ├── denuncias.json        # Base de dados JSON para denúncias
-│   ├── administradores.json  # Base de dados JSON para administradores
-│   └── categorias.json       # Base de dados JSON para categorias
+│   ├── categorias.json       # Base de dados JSON para categorias de denúncias
+│   ├── denuncias.json        # Base de dados JSON para denúncias efetuadas
+│   └── usuarios.json         # Base de dados JSON para usuários administradores
 └── README.md                 # Documentação do projeto
+
 ## Instalação e Execução
 
 ### Pré-requisitos
@@ -67,6 +68,7 @@ sistema_denuncias/
    pip install colorama
 
 3. **Execute o projeto**:
+  ```bash
   python main.py
 
 Uso
