@@ -1,7 +1,7 @@
 # Sistema de Denúncias - CRUD
 
-![Status](https://img.shields.io/badge/status-%20finalizado-green)
-![Python](https://img.shields.io/badge/python-v3.13+-blue)
+![Status](https://img.shields.io/badge/Status-%20Finalizado-green)
+![Python](https://img.shields.io/badge/Python-v3.13+-blue)
 
 Este projeto, desenvolvido para a disciplina **Fundamentos da Computação** com a professora **Aêda Monalliza**, é um sistema CRUD que emula uma aplicação de denúncia policial. O sistema permite a criação de denúncias anônimas, além de fornecer uma área administrativa para o gerenciamento de administradores, categorias de denúncias e progresso das denúncias.
 
@@ -34,7 +34,7 @@ Este projeto, desenvolvido para a disciplina **Fundamentos da Computação** com
 ## Estrutura do Projeto
 
 ```
-sistema_denuncias/
+Crud/
 ├── main.py                   # Arquivo principal do sistema
 ├── modulos/
 │   ├── crud_functions.py     # Funções relacionadas aos CRUD's
@@ -57,18 +57,18 @@ sistema_denuncias/
 
 ### Passos de Instalação
 
-1. **Clone o repositório**:
+**1. Clone o repositório**:
   ```
   git clone https://github.com/seu_usuario/sistema_denuncias.git
   cd sistema_denuncias
   ```
 
-2. **Instale as dependências**:
+**2. Instale as dependências**:
   ```
   pip install colorama
   ```
 
-3. **Execute o projeto**:
+**3. Execute o projeto**:
   ```
   python main.py
   ```
