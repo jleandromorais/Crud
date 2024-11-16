@@ -1,6 +1,6 @@
 # Sistema de Denúncias
 
-![Status](https://img.shields.io/badge/Status-%20kawan-eh-gay-green)
+![Status](https://img.shields.io/badge/Status-%20kawan-gay-green)
 ![Python](https://img.shields.io/badge/Python-v3.13+-blue)
 
 Este projeto, desenvolvido para a disciplina **Fundamentos da Computação** com a professora **Aêda Monalliza**, é um sistema CRUD que emula uma aplicação de denúncia policial. O sistema permite a criação de denúncias anônimas, além de fornecer uma área administrativa para o gerenciamento de administradores, categorias de denúncias e progresso das denúncias.
